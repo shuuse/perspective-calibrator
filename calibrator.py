@@ -40,6 +40,38 @@ class PerspectiveCalibrator:
             elif len(self.points) == 3:
                 print("Now click bottom left point (same distance from camera as bottom right)")
     
+    
+    
+    def preview_transform(self):
+        if len(self.points) != 4:
+            print("Need 4 points to preview transformation")
+            return
+            
+        # Define target points for a reasonable preview size
+        height = self.image.shape[0]
+        width = int(height * 0.5)  # 2:1 aspect ratio for preview
+        target_points = np.array([
+            [0, 0],
+            [width - 1, 0],
+            [width - 1, height - 1],
+            [0, height - 1]
+        ], dtype=np.float32)
+        
+        # Get transformation matrix
+        source_points = self.source_points.astype(np.float32)
+        matrix = cv2.getPerspectiveTransform(source_points, target_points)
+        
+        # Apply transformation
+        warped = cv2.warpPerspective(
+            self.image,
+            matrix,
+            (width, height)
+        )
+        
+        # Show the preview
+        cv2.imshow("Transformation Preview", warped)
+        
+    
     def calculate_extended_points(self):
         # Get the marked points
         top_left = np.array(self.points[0])
@@ -90,8 +122,9 @@ class PerspectiveCalibrator:
         print("\nInstructions:")
         print("1. Click top left point")
         print("2. Press 'r' to reset if you make a mistake")
-        print("3. Press 's' to save when done")
-        print("4. Press 'q' to quit\n")
+        print("3. Press 'p' to preview transformation")
+        print("4. Press 's' to save when done")
+        print("5. Press 'q' to quit\n")
         
         while True:
             key = cv2.waitKey(1) & 0xFF
@@ -112,10 +145,15 @@ class PerspectiveCalibrator:
                 np.save('source_points.npy', self.source_points)
                 print("\nPoints saved to 'source_points.npy'")
             
+            elif key == ord('p') and len(self.points) == 4:
+                self.preview_transform()
+            
             elif key == ord('q'):
                 break
         
         cv2.destroyAllWindows()
+
+
 
 def main():
     import argparse

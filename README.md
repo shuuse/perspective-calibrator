@@ -1,72 +1,72 @@
 # Perspective Calibrator
 
-An interactive tool for calibrating perspective transformation points, particularly useful for converting camera perspectives to birds-eye view. Originally developed for traffic analysis and vehicle speed estimation, but applicable to any perspective transformation needs.
+A simple tool for calibrating perspective transformation points, specifically designed for use with vehicle speed estimation using [Roboflow Supervision](https://github.com/roboflow/supervision).
 
-## Features
+###IMAGE HERE
 
-- Interactive point selection interface
-- Real-time preview of the transformed perspective
-- Grid overlay for precise point placement
-- Support for both image and video input
-- Preview of the perspective transformation before finalizing
-- Easy export of calibration points
+## What does it do?
+
+This tool helps you set the `SOURCE` points required for perspective transformation in speed estimation projects. It's particularly useful for the [speed estimation example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation) from Roboflow Supervision.
 
 ## Installation
 
-1. Create a virtual environment:
 ```bash
+# Create virtual environment
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
 
-2. Install required packages:
-```bash
+# Install requirements
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Run the calibration tool:
+1. Run with a video or image:
 ```bash
-python perspective_calibrator.py --input your_video.mp4
+python perspective_calibrator.py --video your_video.mp4
+# OR
+python perspective_calibrator.py --image your_image.jpg
 ```
 
-2. In the calibration window:
-   - Click to place 4 points in order:
-     1. Top left
-     2. Top right
-     3. Bottom right
-     4. Bottom left
-   - Press 'r' to reset points
-   - Press 'c' to preview the transformation
-   - Press 'q' to quit and save points
+2. Click to place 4 points in this order:
+   - Top left 
+   - Top right (same distance from camera as top left)
+   - Bottom right
+   - Bottom left (same distance from camera as bottom right)
 
-3. The tool will output the calibrated source points that can be used for perspective transformation.
+3. Use keyboard controls:
+   - `r` - Reset points
+   - `p` - Preview transformation
+   - `s` - Save points to 'source_points.npy'
+   - `q` - Quit
 
-## Example
-
+The tool will output the SOURCE points in the format needed for the speed estimation example:
 ```python
-from perspective_calibrator import CalibrationTool
-
-calibrator = CalibrationTool("path_to_video.mp4")
-source_points = calibrator.calibrate()
-print(f"Calibrated source points:\n{source_points}")
+SOURCE = np.array([
+    [x1, y1],  # Top left
+    [x2, y2],  # Top right
+    [x3, y3],  # Bottom right
+    [x4, y4]   # Bottom left
+])
 ```
+
+## Why this tool?
+
+The speed estimation example uses perspective transformation to convert video footage into a birds-eye view for accurate speed calculations. Getting these SOURCE points right is crucial for accurate speed measurements.
+
+Instead of manually trying coordinates, this tool lets you:
+- Visually select points
+- See the transformation in real-time
+- Get properly formatted points for the speed estimation code
 
 ## Requirements
-
 - Python 3.8+
-- OpenCV (cv2) >= 4.8.0
+- OpenCV >= 4.8.0
 - NumPy >= 1.24.0
 
 ## License
+MIT License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Acknowledgments
-
-Originally developed for vehicle speed estimation from traffic camera footage, this tool has been generalized for wider use cases involving perspective transformation calibration.
+## Related Projects
+- [Supervision Speed Estimation Example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation)
+- [Supervision Library](https://github.com/roboflow/supervision)
