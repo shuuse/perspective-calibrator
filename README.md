@@ -6,7 +6,7 @@ A tool for calibrating perspective transformation points, specifically designed 
 
 ## What does it do?
 
-I would recommend watching this [great tutorial video](https://youtu.be/uWP6UjDeZvY?t=413) from Roboflow. Our tool helps you calculate the transformation and set the `SOURCE` points required for perspective transformation in speed estimation projects. It's particularly useful for the [speed estimation example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation) from Roboflow - and maybe for similar tasks using other tools.
+I would recommend watching this [great tutorial video](https://youtu.be/uWP6UjDeZvY?t=413) from Roboflow. Our tool helps you calculate the transformation and set the coordinates s required for perspective transformation in speed estimation projects. It's particularly useful for the [speed estimation example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation) from Roboflow - and maybe for similar tasks using other tools.
 
 ## Installation
 
@@ -40,7 +40,7 @@ python perspective_calibrator.py --image your_image.jpg
    - `s` - Save points to 'source_points.npy'
    - `q` - Quit
 
-The tool will output the SOURCE points in the format needed for the speed estimation example:
+The tool will output the coordinates in the format needed for the speed estimation example:
 ```python
 SOURCE = np.array([
     [x1, y1],  # Top left
