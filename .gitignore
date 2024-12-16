@@ -1,0 +1,58 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+.env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.vs/
+
+# Project specific
+*.mp4
+*.avi
+*.mov
+output/
+recordings/
+calibration_data/
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Coverage and testing
+.coverage
+.coverage.*
+.pytest_cache/
+htmlcov/
+cover/
+.hypothesis/
