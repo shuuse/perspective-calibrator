@@ -6,7 +6,7 @@ A tool for calibrating perspective transformation points, specifically designed 
 
 ## What does it do?
 
-This tool helps you set the `SOURCE` points required for perspective transformation in speed estimation projects. It's particularly useful for the [speed estimation example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation) from Roboflow Supervision.
+I would recommend watching this [great tutorial video](https://youtu.be/uWP6UjDeZvY?t=413) from Roboflow. Our tool helps you calculate the transformation and set the `SOURCE` points required for perspective transformation in speed estimation projects. It's particularly useful for the [speed estimation example](https://github.com/roboflow/supervision/tree/develop/examples/speed_estimation) from Roboflow - and maybe for similar tasks using other tools.
 
 ## Installation
 
