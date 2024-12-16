@@ -2,7 +2,7 @@
 
 A simple tool for calibrating perspective transformation points, specifically designed for use with vehicle speed estimation using [Roboflow Supervision](https://github.com/roboflow/supervision).
 
-###IMAGE HERE
+![Perspective preview](images/screen.png)
 
 ## What does it do?
 
@@ -49,6 +49,9 @@ SOURCE = np.array([
     [x4, y4]   # Bottom left
 ])
 ```
+
+![Hit S and find the SOURCE data in the console](images/output.png)
+
 
 ## Why this tool?
 
