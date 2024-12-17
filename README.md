@@ -1,6 +1,6 @@
 # Perspective Calibrator
 
-A tool for calibrating perspective transformation points, specifically designed for use with vehicle speed estimation using [Roboflow Supervision](https://github.com/roboflow/supervision).
+A handy tool for calibrating perspective transformation points, specifically designed for use with vehicle speed estimation using [Roboflow Supervision](https://github.com/roboflow/supervision).
 
 ![Perspective preview](images/screen.png)
 
