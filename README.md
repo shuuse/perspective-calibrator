@@ -12,7 +12,7 @@ I would recommend watching this [great tutorial video](https://youtu.be/uWP6UjDe
 
 ```bash
 # Create virtual environment
-python3 -m venv venv
+python3 -m venv venv 
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install requirements
